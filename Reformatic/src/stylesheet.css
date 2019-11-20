@@ -1,0 +1,66 @@
+#rcol {
+    -fx-background-color:#2d3142;
+}
+.label {
+    -fx-font: 24px "Montserrat";
+    -fx-font-weight: 900;
+}
+
+.button {
+    -fx-font: 14px "Montserrat";
+    -fx-text-fill: white;
+    -fx-padding: 15px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-background-color: #2d3142;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-pref-width: 240px;
+}
+
+.button:hover {
+    -fx-background-color:#354360;
+  }
+
+#description {
+    -fx-padding: 15px;
+} 
+
+#previewTitle {
+    -fx-text-fill: white;
+}
+#errorLogTitle {
+    -fx-text-fill: white;
+}
+
+#output {
+    -fx-border-radius: 10 10 0 0;
+    -fx-background-radius: 10 10 0 0;
+    -fx-min-height: 150px;
+}
+
+#errorLog {
+    -fx-min-height: 25px;
+}
+
+#dialogBox {
+    -fx-background-color: white;
+    -fx-padding: 15px;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text-area .content{
+    -fx-background-color: white;
+}
+
+#formatVBox {
+    -fx-alignment: center;
+}
