@@ -5,7 +5,6 @@
     -fx-font: 24px "Montserrat";
     -fx-font-weight: 900;
 }
-
 .button {
     -fx-font: 14px "Montserrat";
     -fx-text-fill: white;
@@ -43,24 +42,12 @@
     -fx-min-height: 25px;
 }
 
-#dialogBox {
-    -fx-background-color: white;
-    -fx-padding: 15px;
-}
-
-.text-area .scroll-pane {
-    -fx-background-color: transparent;
-}
-.text-area .scroll-pane .viewport{
-    -fx-background-color: transparent;
-}
-.text-area .scroll-pane .content{
-    -fx-background-color: transparent;
-}
 .text-area .content{
     -fx-background-color: white;
 }
 
-#formatVBox {
+.popup {
     -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-padding: 15px;
 }

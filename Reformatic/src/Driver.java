@@ -67,10 +67,10 @@ public class Driver extends Application
                 
                 // All of the elements are contained in a VBox
                 VBox formatVBox = new VBox(formatDialogTitle, formatDescription, pathFieldDescrip, formatFilepathField);
-                formatVBox.setId("formatBox");
+                formatVBox.getStyleClass().add("popup");
                 
                 // Create and set properties of the format stage/scene
-                Scene formatScene = new Scene(formatVBox, 450, 200);
+                Scene formatScene = new Scene(formatVBox, 640, 200);
                 formatScene.getStylesheets().add("stylesheet.css");
                 formatStage.setScene(formatScene);
                 formatStage.show();
@@ -104,11 +104,11 @@ public class Driver extends Application
                 saveNameField.setMaxWidth(400);
                 
                 // All elements are contained in a VBox
-                VBox formatVBox = new VBox(saveDialogTitle, saveDescrip, nameFieldDescrip, saveNameField, pathFieldDescrip, saveFilepathField);
-                formatVBox.setId("formatBox");
+                VBox saveVBox = new VBox(saveDialogTitle, saveDescrip, nameFieldDescrip, saveNameField, pathFieldDescrip, saveFilepathField);
+                saveVBox.getStyleClass().add("popup");
                 
                 // Create and set properties of the save stage/scene
-                Scene saveScene = new Scene(formatVBox, 450, 200);
+                Scene saveScene = new Scene(saveVBox, 640, 200);
                 saveScene.getStylesheets().add("stylesheet.css");
                 saveStage.setScene(saveScene);
                 saveStage.show();
@@ -126,10 +126,10 @@ public class Driver extends Application
                 viewFlagsStage.initOwner(primaryStage);
                 
                 // Create the title and add flags into the view flags pop up window
-                Label dialogTitle = new Label("LIST OF FLAGS");
+                Label flagListTitle = new Label("LIST OF FLAGS");
                 
                 // Note: This can draw from a text file if we have time to implement
-                Text dialogFlagList = new Text("-r\tRight Justification\n"
+                Text flagList = new Text("-r\tRight Justification\n"
                 							+ "-c\tCenter Justification\n"
                 							+ "-l\tLeft Justification\n"
                 							+ "-t\tTitle\n"
@@ -143,11 +143,11 @@ public class Driver extends Application
                 							+ "-e\tBlank Line\n");
                 
                 // All elements contained in a VBox
-                VBox dialogVBox = new VBox(dialogTitle, dialogFlagList);
-                dialogVBox.setId("dialogBox");
+                VBox viewFlagsVBox = new VBox(flagListTitle, flagList);
+                viewFlagsVBox.getStyleClass().add("popup");
                 
                 // Create and set properties of the view flags stage/scene
-                Scene viewFlagsScene = new Scene(dialogVBox, 200, 300);
+                Scene viewFlagsScene = new Scene(viewFlagsVBox, 320, 400);
                 viewFlagsScene.getStylesheets().add("stylesheet.css");
                 viewFlagsStage.setScene(viewFlagsScene);
                 viewFlagsStage.show();
