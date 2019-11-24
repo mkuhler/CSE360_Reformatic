@@ -67,7 +67,7 @@ public class Processing {
 				Paragraph temp= formatted.get(i);
 				for(int j= 0; j<temp.getFormattedSize(); j++) {
 					out.write(temp.getFormattedLine(j));
-					if(i< temp.getFormattedSize() -1) {
+					if(j< temp.getFormattedSize() -1) {
 						out.newLine();
 					}
 				}
