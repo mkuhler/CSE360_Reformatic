@@ -23,8 +23,7 @@ public class Processing {
 					if(str.charAt(0) == '-'){
 						if(firstFlag) {// if first flag of new formatting section, then format all the lines that were read
 							intermediate.add(paragraph);
-							Paragraph temp= new Paragraph(paragraph);
-							paragraph = temp;
+							paragraph = new Paragraph(paragraph);
 							firstFlag= false;
 						}
 						boolean valid= paragraph.checkFlag(str); // checks if flags are valid and sets flag values to variables
