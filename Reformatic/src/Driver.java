@@ -107,7 +107,8 @@ public class Driver {
 			// Call function to format file
 			output.setText("FORMATTED LOL");
 		}
-		public static void changeFont (Component comp, Font font) {
+		
+		public void changeFont (Component comp, Font font) {
 			comp.setFont(font);
 			
 			if (comp instanceof Container) {
@@ -115,6 +116,10 @@ public class Driver {
 					changeFont(child, font);
 				}
 			}
+		}
+		
+		public void changeBtnStyle (JButton btn) {
+			//btn.setBackground();
 		}
 }
 
