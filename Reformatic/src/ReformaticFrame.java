@@ -1,21 +1,11 @@
-/*
- * Zion L. Basque
- * 14-10-2017
- * A program that simulates a word processor
- */
 import javax.swing.*;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import java.io.File;
 
 
 import javax.swing.border.EtchedBorder;
@@ -23,7 +13,6 @@ import javax.swing.border.TitledBorder;
 public class ReformaticFrame extends JFrame implements KeyListener
 {
 	private JPanel centerPanel;
-	private JCheckBox wCount, vCount, cCount;
 	private JTextField output, error;
 	private ActionListener listener;
 	ReformaticFrame()
