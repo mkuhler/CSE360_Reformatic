@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.io.*;
+import javax.swing.filechooser.FileSystemView;
 
 public class ReformaticFrame extends JFrame 
 {
@@ -11,9 +13,13 @@ public class ReformaticFrame extends JFrame
 	private JButton loadBtn, saveBtn, viewFlagsBtn, quitBtn;
 	private JTextField output, error;
 	private ActionListener listener;
+	private Processing processor; 
+	private JFileChooser fc;
 	ReformaticFrame()
 	{
+		fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		listener = new ChoiceListener(); 
+		processor = new Processing();
 		createCenterPanel();
 		add(centerPanel);
 		setSize(800,400);
@@ -25,13 +31,13 @@ public class ReformaticFrame extends JFrame
 		public void actionPerformed(ActionEvent event)
 		{
 			if(event.getSource() == loadBtn)
-				System.out.println("Load button pressed");
+				loadFile();
 			if(event.getSource() == saveBtn)
-				System.out.println("Save button pressed");
+				saveFile();
 			if(event.getSource() == viewFlagsBtn)
 				System.out.println("View Flags button pressed");
 			if(event.getSource() == quitBtn)
-				System.out.println("Quit button pressed");
+				System.exit(0);
 		}
 	}
 	
@@ -106,5 +112,39 @@ public class ReformaticFrame extends JFrame
         rightPanel.add(errorScrollPane, 1);
 		
         return rightPanel;
+	}
+	
+	public void loadFile() 
+	{
+		String filename = "";
+		int returnValue = fc.showOpenDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = fc.getSelectedFile();
+			filename = selectedFile.getAbsolutePath();
+		}
+		
+		try {
+			processor.readFile(filename);
+		} 
+		catch (IOException e) {
+			//TODO: Add error output  
+		}
+	}
+	
+	public void saveFile() 
+	{
+		String filename = "";
+		int returnValue = fc.showSaveDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = fc.getSelectedFile();
+			filename = selectedFile.getAbsolutePath();
+		}
+		
+		try {
+			processor.Save(filename);
+		} 
+		catch (IOException e) {
+			//TODO: Add error output  
+		}
 	}
 }
