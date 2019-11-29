@@ -35,7 +35,7 @@ public class ReformaticFrame extends JFrame
 			if(event.getSource() == saveBtn)
 				saveFile();
 			if(event.getSource() == viewFlagsBtn)
-				System.out.println("View Flags button pressed");
+				displayFlags();
 			if(event.getSource() == quitBtn)
 				System.exit(0);
 		}
@@ -146,5 +146,26 @@ public class ReformaticFrame extends JFrame
 		catch (IOException e) {
 			//TODO: Add error output  
 		}
+	}
+	
+	public void displayFlags() 
+	{
+		String flags = "List of Flags:\n" +
+				"-r\t\tRight Justification\n" +
+				"-c		Center Justification\n" +
+				"-l		Left Justification\n" +
+				"-t		Title\n" +
+				"\n" +
+				"-d		Double Space\n" +
+				"-s		Single Space\n" +
+				"\n" +
+				"-i		Indent on First Line\n" +
+				"-b		Block Text\n" +
+				"\n" +
+				"-2		Two Column Layout\n" +
+				"-1		One Column Layout\n" +
+				"-e		Blank Line";
+		
+		JOptionPane.showMessageDialog(null, flags);
 	}
 }
