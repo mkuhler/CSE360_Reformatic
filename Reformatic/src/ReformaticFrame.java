@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
@@ -11,7 +13,7 @@ public class ReformaticFrame extends JFrame
 {
 	private JPanel centerPanel;
 	private JButton loadBtn, saveBtn, viewFlagsBtn, quitBtn;
-	private JTextField output, error;
+	private JTextArea output, error;
 	private ActionListener listener;
 	private Processing processor; 
 	private JFileChooser fc;
@@ -88,28 +90,39 @@ public class ReformaticFrame extends JFrame
 	}
 	public JPanel createRightPanel()
 	{
-		// create the right panel 
+		// create the right panel
+		/*
         GridLayout colLayout = new GridLayout(0, 1);
         colLayout.setVgap(10);
         colLayout.setHgap(10);
 		JPanel rightPanel = new JPanel(colLayout);
+		*/
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new BorderLayout());
 		
 		// create the output panel 
-		output = new JTextField();
+		output = new JTextArea();
 		output.setEditable(false);
+		output.setLineWrap(true);
         JScrollPane outputScrollPane = new JScrollPane(output); 
 		outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScrollPane.setBorder(new TitledBorder(new EtchedBorder(), "Output"));
-		outputScrollPane.setPreferredSize(new Dimension(250, 50));
-        rightPanel.add(outputScrollPane, 0);
+		outputScrollPane.setPreferredSize(new Dimension(80, 300));
+        
+		rightPanel.add(outputScrollPane, BorderLayout.CENTER);
 
         // create the error panel 
-		error = new JTextField();
+		error = new JTextArea();
 		error.setEditable(false);
+		error.setLineWrap(true);
+		
 		JScrollPane errorScrollPane = new JScrollPane(error); 
 		errorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         errorScrollPane.setBorder(new TitledBorder(new EtchedBorder(), "Error"));
-        rightPanel.add(errorScrollPane, 1);
+		errorScrollPane.setPreferredSize(new Dimension(80, 200));
+
+        
+        rightPanel.add(errorScrollPane, BorderLayout.SOUTH);
 		
         return rightPanel;
 	}
