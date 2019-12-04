@@ -330,11 +330,89 @@ public class Paragraph {
 	
 	private ArrayList<String> centerJustify(){
 		ArrayList<String> list = new ArrayList<String>();
+		String temp= "";
+		int size;
+		if(column1)
+			size = 80;
+		else
+			size = 35;
+		for(int i=0; i< paragraph.size(); i++) {
+			String line= paragraph.get(i);
+			String [] words= line.split(" ");
+			for(int j=0; j< words.length; j++) {
+				String add= words[j];
+				if(temp.length() + add.length() +1 >size) {
+					temp = centerHelper(temp, size);
+					list.add(temp);
+					if(!single && column1)
+						list.add("");
+					temp= "";
+					temp= temp + add;
+				}
+				else {
+					if(temp.length() == 0) {
+						temp= temp + add;
+					}
+					else {
+					temp= temp +" "+ add;
+					}
+				}
+			}
+		}
+		if(temp.length()>0) {
+			temp = centerHelper(temp, size);
+			list.add(temp);
+		}
 		return list;
 	}
 	
+	private String centerHelper(String line, int size) {
+		String result = "";
+		String [] words= line.split(" ");
+		int spaces = size - line.length();
+		if(words.length == 1) {
+			result = result +words[0];
+		}
+		else {
+			int evenDistribution = spaces / (words.length -1);
+			int oddDistribution= spaces % (words.length -1);
+			for(int i=0; i< words.length; i++) {
+				result= result + words[i];
+				if(i < words.length -1) { 
+					result = result + " ";
+					for(int j = 0; j< evenDistribution; j++) {
+						result = result + " ";
+					}
+					if(i < oddDistribution) {
+						result = result + " ";
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
 	private void formatTwoColumns(ArrayList<String> lines) {
-		
+		int size= lines.size();
+		int halfSize;
+		if(size %2 == 0) {
+			halfSize = size/2;
+		}
+		else {
+			halfSize = size/2 +1;
+		}
+		for(int i=0; i<halfSize; i++) {
+			String temp= lines.get(i);
+			if(i+ halfSize < size) {
+				for(int j=0; j<10; j++) {
+					temp= temp+ " ";
+				}
+				temp= temp+lines.get(i+halfSize);
+			}
+			formatted.add(temp);
+			if(!single)
+				formatted.add("");
+		}
 	}
 	
 	public void printParagraph() {
