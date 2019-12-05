@@ -8,6 +8,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
@@ -53,8 +54,6 @@ public class ReformaticFrame extends JFrame
 		// set basic frame properties
 		setSize(1280,640);
 		setTitle("Reformatic - A file reformatting tool");
-		Font mainFont = new Font("Courier", Font.BOLD,12);
-		changeFont( this, mainFont);
 	}
 	
 	public class ChoiceListener implements ActionListener
@@ -126,13 +125,15 @@ public class ReformaticFrame extends JFrame
         //create an image holder to hold the logo
        BufferedImage image = null;
         try {                
-        	image = ImageIO.read(new File("./reformaticLogo.png"));
+        	image = ImageIO.read(new File("src/reformaticLogo.png"));
         } catch (IOException ex) {
               System.out.println("Frame Error Encountered");
         }
-        JLabel picLabel = new JLabel(new ImageIcon(image));
-        topPanel.add(picLabel);
+        //Image resizeImg = image.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        JLabel picLabel = new JLabel(new ImageIcon(newimg));
         
+        topPanel.add(picLabel);
         
         // add the panels to the leftPanel 
         leftPanel.add(topPanel,0);
@@ -151,17 +152,22 @@ public class ReformaticFrame extends JFrame
 		output = new JTextArea();
 		output.setEditable(false);
 		output.setLineWrap(true);
+		
         JScrollPane outputScrollPane = new JScrollPane(output); 
 		outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScrollPane.setBorder(new TitledBorder(new EtchedBorder(), "Output"));
 		outputScrollPane.setPreferredSize(new Dimension(80, 300));
-        
+		
 		rightPanel.add(outputScrollPane, BorderLayout.CENTER);
 
         // create the error panel 
 		error = new JTextArea();
 		error.setEditable(false);
 		error.setLineWrap(true);
+		
+		Font outputFont = new Font("Courier", Font.BOLD,12);
+		output.setFont(outputFont);
+		error.setFont(outputFont);
 		
 		JScrollPane errorScrollPane = new JScrollPane(error); 
 		errorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
