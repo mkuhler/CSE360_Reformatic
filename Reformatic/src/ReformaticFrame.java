@@ -209,7 +209,9 @@ public class ReformaticFrame extends JFrame
 					catch(Exception e) {
 						// if this occurs, the file is not all in ascii
 						fileLoaded = false;
-						updateErrorLog(CORR_DOC_ERR);
+						updateErrorLog(CORR_DOC_ERR + "- file input discarded");
+						clearOutput();
+						break;
 					}
 				}
 			}
