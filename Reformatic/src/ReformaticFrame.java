@@ -103,22 +103,27 @@ public class ReformaticFrame extends JFrame
         loadBtn = new JButton("Load File");
         bottomPanel.add(loadBtn,0);
         loadBtn.addActionListener(listener);
-
+        formatButton(loadBtn);
+        
         saveBtn = new JButton("Save File");
         bottomPanel.add(saveBtn,1);
         saveBtn.addActionListener(listener);
+        formatButton(saveBtn);
         
         clearBtn = new JButton("Clear");
         bottomPanel.add(clearBtn,2);
         clearBtn.addActionListener(listener);
+        formatButton(clearBtn);
 
         viewFlagsBtn = new JButton("View Flags");
         bottomPanel.add(viewFlagsBtn,3);
         viewFlagsBtn.addActionListener(listener);
+        formatButton(viewFlagsBtn);
         
         quitBtn = new JButton("Quit");
         bottomPanel.add(quitBtn,4);
         quitBtn.addActionListener(listener);
+        formatButton(quitBtn);
         
         //create an image holder to hold the logo
        BufferedImage image = null;
@@ -292,5 +297,13 @@ public class ReformaticFrame extends JFrame
 	{
 		errorLog += "ERROR: "+ errorStatement + "\n";
 		error.setText(errorLog);
+	}
+	
+	private void formatButton(JButton btn) {
+		btn.setBackground(Color.DARK_GRAY);
+		btn.setForeground(Color.WHITE);
+		
+		btn.setBorderPainted(false);
+		btn.setFocusPainted(false);
 	}
 }
