@@ -1,0 +1,93 @@
+-2
+-c
+-d
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+-i
+-s
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+-e
+-c
+-d
+This is a             sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+-e
+-t
+-c
+-s
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+-e
+-r
+-2
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+This is a sample text used to show how the formatting for
+flags work. Please remember that the
+flags must be their
+own line and begin the line with -. 
+-e
+-1
+-c
+word
+-e
+word word
+-e 
+word word word
+-e
+word word word word
+-e
+word word word word word
+-e
+word word word word word word
