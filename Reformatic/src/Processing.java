@@ -17,14 +17,18 @@ public class Processing {
 			String str;
 			str = reader.readLine();
 			Paragraph paragraph= new Paragraph();
+			int count =0;
 			boolean firstFlag = true; // keeps track whether flag being read is the first flag in a formatting section
 			while(str != null) { // reads file until end of file is reached
 				if(str.length()>0) {
 					if(str.charAt(0) == '-'){
 						if(firstFlag) {// if first flag of new formatting section, then format all the lines that were read
+							if(count>0) {
 							intermediate.add(paragraph);
 							paragraph = new Paragraph(paragraph);
+							}
 							firstFlag= false;
+							count ++;
 						}
 						boolean valid= paragraph.checkFlag(str); // checks if flags are valid and sets flag values to variables
 						if(!valid) { // if not valid then all lines formatted in this file are erased and error is thrown
@@ -69,7 +73,7 @@ public class Processing {
 					if(j< temp.getFormattedSize()-1)
 						out.newLine();
 				}
-				if(i<formatted.size()-1 && i>0)
+				if(i<formatted.size()-1)
 					out.newLine();
 			}
 			out.close();

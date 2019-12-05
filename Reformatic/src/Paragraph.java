@@ -9,7 +9,7 @@ public class Paragraph {
 	private boolean indentation; // true for indentation otherwise does nothing
 	private boolean block; // true for block format otherwise does nothing
 	private boolean column1;// true for one column, false for two columns
-
+	private int emptyLine;
 	
 	public Paragraph() {
 		justification= 'l'; 
@@ -18,6 +18,7 @@ public class Paragraph {
 		indentation = false; 
 		block = false; 
 		column1 = true;
+		emptyLine= 0;
 	}
 	
 	public Paragraph(Paragraph previous) {
@@ -26,6 +27,7 @@ public class Paragraph {
 		indentation= previous.getIndentation();
 		block = previous.getBlock();
 		column1= previous.getColumn();
+		emptyLine=0;
 	}
 	public char getJustification() {
 		return justification;
@@ -104,12 +106,7 @@ public class Paragraph {
 				column1 = true;
 			}
 			else if(x == 'e') {
-				if(!single) {
-					formatted.add("");
-					formatted.add("");
-				}
-				else
-					formatted.add("");
+				emptyLine++;
 			}
 			else {
 				return false;
@@ -122,6 +119,11 @@ public class Paragraph {
 	}
 	
 	public void format() {
+		for(int i =0; i<emptyLine; i++) {
+			formatted.add("");
+			if(!single)
+				formatted.add("");
+		}
 		if(title) {
 			formatTitle(paragraph.get(0));
 			if(!single)
@@ -137,8 +139,11 @@ public class Paragraph {
 		else if(justification == 'l') {
 			ArrayList<String> temp =leftJustify();
 			if(column1) {
-				for(int i=0; i<temp.size(); i++)
+				for(int i=0; i<temp.size(); i++) {
 					formatted.add(temp.get(i));
+					if(!single)
+						formatted.add("");
+				}
 			}
 			else
 				formatTwoColumns(temp);
@@ -146,8 +151,11 @@ public class Paragraph {
 		else if(justification == 'r') {
 			ArrayList<String> temp =rightJustify();
 			if(column1) {
-				for(int i=0; i<temp.size(); i++)
+				for(int i=0; i<temp.size(); i++) {
 					formatted.add(temp.get(i));
+					if(!single)
+						formatted.add("");
+				}
 			}
 			else
 				formatTwoColumns(temp);
@@ -155,8 +163,11 @@ public class Paragraph {
 		else if(justification == 'c') {
 			ArrayList<String> temp =centerJustify();
 			if(column1) {
-				for(int i=0; i<temp.size(); i++)
+				for(int i=0; i<temp.size(); i++) {
 					formatted.add(temp.get(i));
+					if(!single)
+						formatted.add("");
+				}
 			}
 			else
 				formatTwoColumns(temp);
@@ -265,8 +276,6 @@ public class Paragraph {
 						temp= temp+ " ";
 					}
 					list.add(temp);
-					if(!single && column1)
-						list.add("");
 					temp= "";
 					temp= temp + add;
 				}
@@ -284,8 +293,6 @@ public class Paragraph {
 			while(temp.length()<size)
 				temp= temp+ " ";
 			list.add(temp);
-			if(!single&& column1)
-				formatted.add("");
 		}
 		return list;
 	}
@@ -308,8 +315,6 @@ public class Paragraph {
 						temp= " "+temp;
 					}
 					list.add(temp);
-					if(!single && column1)
-						list.add("");
 					temp= "";
 					temp= temp + add;
 				}
@@ -328,8 +333,6 @@ public class Paragraph {
 				temp= " " +temp;
 			}
 			list.add(temp);
-			if(!single && column1)
-				formatted.add("");
 		}
 		return list;	
 	}
@@ -350,8 +353,6 @@ public class Paragraph {
 				if(temp.length() + add.length() +1 >size) {
 					temp = centerHelper(temp, size);
 					list.add(temp);
-					if(!single && column1)
-						list.add("");
 					temp= "";
 					temp= temp + add;
 				}
@@ -368,8 +369,6 @@ public class Paragraph {
 		if(temp.length()>0) {
 			temp = centerHelper(temp, size);
 			list.add(temp);
-			if(!single && column1)
-				formatted.add("");
 		}
 		return list;
 	}
