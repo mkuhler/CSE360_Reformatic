@@ -11,7 +11,7 @@ public class Processing {
 			formatted = new ArrayList<Paragraph>();
 		}
 		
-		public void readFile(String fileName) throws IOException{
+		public void readFile(String fileName) throws Exception{
 			File file= new File(fileName);
 			BufferedReader reader= new BufferedReader(new FileReader(file));
 			String str;
