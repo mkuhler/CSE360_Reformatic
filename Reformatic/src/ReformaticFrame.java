@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
@@ -8,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.io.*;
@@ -79,30 +82,48 @@ public class ReformaticFrame extends JFrame
         colLayout.setVgap(10);
         colLayout.setHgap(10);
 		JPanel leftPanel = new JPanel(colLayout);
-		leftPanel.setBorder(new TitledBorder(new EtchedBorder(), "Reformatic"));
+		JPanel topPanel = new JPanel(colLayout);
+		JPanel bottomPanel = new JPanel(colLayout);
+		centerPanel.setBorder(new TitledBorder(new EtchedBorder(), "Reformatic"));
 	   
         // add each function button to panel 
 		// and add listener to each button for action
         loadBtn = new JButton("Load File");
-        leftPanel.add(loadBtn,0);
+        bottomPanel.add(loadBtn,0);
         loadBtn.addActionListener(listener);
 
         saveBtn = new JButton("Save File");
-        leftPanel.add(saveBtn,1);
+        bottomPanel.add(saveBtn,1);
         saveBtn.addActionListener(listener);
         
         clearBtn = new JButton("Clear");
-        leftPanel.add(clearBtn,2);
+        bottomPanel.add(clearBtn,2);
         clearBtn.addActionListener(listener);
 
         viewFlagsBtn = new JButton("View Flags");
-        leftPanel.add(viewFlagsBtn,3);
+        bottomPanel.add(viewFlagsBtn,3);
         viewFlagsBtn.addActionListener(listener);
         
         quitBtn = new JButton("Quit");
-        leftPanel.add(quitBtn,4);
+        bottomPanel.add(quitBtn,4);
         quitBtn.addActionListener(listener);
- 
+        
+        //create an image holder to hold the logo
+        BufferedImage image = null;
+        try {                
+        	image = ImageIO.read(new File("./reformaticLogo.png"));
+        } catch (IOException ex) {
+              System.out.println("Frame Error Encountered");
+        }
+        JLabel picLabel = new JLabel(new ImageIcon(image));
+        topPanel.add(picLabel);
+        
+        
+        // add the panels to the leftPanel 
+        leftPanel.add(topPanel,0);
+        leftPanel.add(bottomPanel,1);
+        
+        
 		return leftPanel;
 	}
 	public JPanel createRightPanel()
