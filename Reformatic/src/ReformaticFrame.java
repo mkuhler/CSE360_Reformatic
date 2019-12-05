@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.swing.filechooser.FileSystemView;
@@ -182,23 +183,42 @@ public class ReformaticFrame extends JFrame
 			filename = selectedFile.getAbsolutePath();
 		}
 		
-		try {
-			processor.readFile(filename);
-		} 
-		catch (IOException e) {
-			//TODO: Add error output  
-		}
-		
-		fileLoaded = true;
-		ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
-		finalOutput = processor.getOutput();
-		
-		// Looping through each line and printing the output to the text area
-		for(Paragraph p : finalOutput){
-			for(int i =0; i<p.getFormattedSize(); i++) {
-				String line = p.getFormattedLine(i);
-				output.append(line + "\n");
+		if(filename.contains(".txt"))
+		{
+			try {
+				processor.readFile(filename);
+			} 
+			catch (IOException e) {
+				//this means the file was either not found, or out of permissions
+				updateErrorLog(FILE_NOT_FOUND);
 			}
+			
+			fileLoaded = true;
+			ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
+			finalOutput = processor.getOutput();
+			
+			// Looping through each line and printing the output to the text area
+			for(Paragraph p : finalOutput){
+				for(int i =0; i<p.getFormattedSize(); i++) {
+					String line = p.getFormattedLine(i);
+					output.append(line + "\n");
+					
+					try {
+						line.getBytes(StandardCharsets.US_ASCII);
+					}
+					catch(Exception e) {
+						// if this occurs, the file is not all in ascii
+						fileLoaded = false;
+						updateErrorLog(CORR_DOC_ERR);
+					}
+				}
+			}
+			
+		}
+		else 
+		{
+			//this means the file was not supported, since .txt is not in extension
+			updateErrorLog(UNSUP_FILE_ERR);
 		}
 	}
 	
