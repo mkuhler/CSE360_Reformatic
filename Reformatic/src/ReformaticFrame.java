@@ -109,7 +109,7 @@ public class ReformaticFrame extends JFrame
         quitBtn.addActionListener(listener);
         
         //create an image holder to hold the logo
-        BufferedImage image = null;
+       BufferedImage image = null;
         try {                
         	image = ImageIO.read(new File("./reformaticLogo.png"));
         } catch (IOException ex) {
@@ -211,21 +211,22 @@ public class ReformaticFrame extends JFrame
 	}
 	public void displayFlags() 
 	{
+		String tab = "     ";
 		String flags = "List of Flags:\n" +
-				"-r\t\tRight Justification\n" +
-				"-c		Center Justification\n" +
-				"-l		Left Justification\n" +
-				"-t		Title\n" +
+				"-r" + tab + "Right Justification\n" +
+				"-c" + tab + "		Center Justification\n" +
+				"-l" + tab + "		Left Justification\n" +
+				"-t" + tab + "		Title\n" +
 				"\n" +
-				"-d		Double Space\n" +
-				"-s		Single Space\n" +
+				"-d" + tab + "	Double Space\n" +
+				"-s" + tab + "		Single Space\n" +
 				"\n" +
-				"-i		Indent on First Line\n" +
-				"-b		Block Text\n" +
+				"-i" + tab + "		Indent on First Line\n" +
+				"-b" + tab + "		Block Text\n" +
 				"\n" +
-				"-2		Two Column Layout\n" +
-				"-1		One Column Layout\n" +
-				"-e		Blank Line";
+				"-2" + tab + "	Two Column Layout\n" +
+				"-1" + tab + "	One Column Layout\n" +
+				"-e" + tab + "		Blank Line";
 		
 		JOptionPane.showMessageDialog(null, flags);
 	}
