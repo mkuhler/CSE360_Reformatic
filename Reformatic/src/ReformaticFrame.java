@@ -192,6 +192,9 @@ public class ReformaticFrame extends JFrame
 				//this means the file was either not found, or out of permissions
 				updateErrorLog(FILE_NOT_FOUND);
 			}
+			catch (Exception e) {
+				updateErrorLog("Uknown Error: " + e);
+			}
 			
 			fileLoaded = true;
 			ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
