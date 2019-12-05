@@ -73,6 +73,7 @@ public class Paragraph {
 				title = true;
 				indentation = false;
 				block = false;
+				column1 = true;
 			}
 			else if(x == 'n' ) {
 				indentation = false;
@@ -100,6 +101,7 @@ public class Paragraph {
 			else if(x == '2') {
 				indentation = false;
 				block = false;
+				title = false;
 				column1 = false;
 			}
 			else if(x == '1') {
@@ -128,7 +130,6 @@ public class Paragraph {
 			formatTitle(paragraph.get(0));
 			if(!single)
 				formatted.add("");
-			paragraph.remove(0);
 		}
 		if(indentation) {
 			formatIndent();
@@ -175,15 +176,25 @@ public class Paragraph {
 	}
 	
 	private void formatTitle(String line) {
-		String temp = line;
-		while(temp.length() <80) {
-			if(temp.length() == 79) {
-				temp= " "+ temp;
+		String temp = "";
+		if(line.length() <= 80) {
+			temp= line;
+			while(temp.length() <80) {
+				if(temp.length() == 79) {
+					temp= " "+ temp;
+				}
+				else {
+					temp = " "+ temp + " ";
+				}
 			}
-			else {
-				temp = " "+ temp + " ";
-			}
+			paragraph.remove(0);
 		}
+		else {
+			temp= line.substring(0, 80);
+			String remaining= line.substring(80);
+			paragraph.set(0, remaining);
+		}
+			
 		formatted.add(temp);
 	}
 	
