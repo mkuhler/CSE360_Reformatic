@@ -33,8 +33,7 @@ public class Processing {
 						boolean valid= paragraph.checkFlag(str); // checks if flags are valid and sets flag values to variables
 						if(!valid) { // if not valid then all lines formatted in this file are erased and error is thrown
 							intermediate.clear();
-							//error handling goes here
-							break;
+							throw new InvalidFlag("bad flag");
 						}
 					}
 					else {
@@ -81,5 +80,11 @@ public class Processing {
 		public void clear() {
 			formatted.clear();
 		}
+}
+
+class InvalidFlag extends Exception{
+	public InvalidFlag(String s) {
+		super(s);
+	}
 }
 

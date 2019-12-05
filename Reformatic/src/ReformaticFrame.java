@@ -8,7 +8,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
@@ -36,7 +35,6 @@ public class ReformaticFrame extends JFrame
 	
 	// error strings
 	private final String INVAL_FLG_ERR = "INVALID FLAG";
-	private final String MULTI_FLG_ERR = "MULTIPLE FLAGS";
 	private final String EPTY_DOC_ERR = "EMPTY DOCUMENT";
 	private final String CORR_DOC_ERR = "CORRUPTED DOCUMENT";
 	private final String UNSUP_FILE_ERR = "UNSUPPORTED FILETYPE";
@@ -54,6 +52,8 @@ public class ReformaticFrame extends JFrame
 		// set basic frame properties
 		setSize(1280,640);
 		setTitle("Reformatic - A file reformatting tool");
+		Font mainFont = new Font("Courier", Font.BOLD,12);
+		changeFont( this, mainFont);
 	}
 	
 	public class ChoiceListener implements ActionListener
@@ -125,15 +125,13 @@ public class ReformaticFrame extends JFrame
         //create an image holder to hold the logo
        BufferedImage image = null;
         try {                
-        	image = ImageIO.read(new File("src/reformaticLogo.png"));
+        	image = ImageIO.read(new File("./reformaticLogo.png"));
         } catch (IOException ex) {
               System.out.println("Frame Error Encountered");
         }
-        //Image resizeImg = image.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        JLabel picLabel = new JLabel(new ImageIcon(newimg));
-        
+        JLabel picLabel = new JLabel(new ImageIcon(image));
         topPanel.add(picLabel);
+        
         
         // add the panels to the leftPanel 
         leftPanel.add(topPanel,0);
@@ -152,22 +150,17 @@ public class ReformaticFrame extends JFrame
 		output = new JTextArea();
 		output.setEditable(false);
 		output.setLineWrap(true);
-		
         JScrollPane outputScrollPane = new JScrollPane(output); 
 		outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         outputScrollPane.setBorder(new TitledBorder(new EtchedBorder(), "Output"));
 		outputScrollPane.setPreferredSize(new Dimension(80, 300));
-		
+        
 		rightPanel.add(outputScrollPane, BorderLayout.CENTER);
 
         // create the error panel 
 		error = new JTextArea();
 		error.setEditable(false);
 		error.setLineWrap(true);
-		
-		Font outputFont = new Font("Courier", Font.BOLD,12);
-		output.setFont(outputFont);
-		error.setFont(outputFont);
 		
 		JScrollPane errorScrollPane = new JScrollPane(error); 
 		errorScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -197,6 +190,9 @@ public class ReformaticFrame extends JFrame
 			catch (IOException e) {
 				//this means the file was either not found, or out of permissions
 				updateErrorLog(FILE_NOT_FOUND);
+			}
+			catch (InvalidFlag e) {
+				updateErrorLog(INVAL_FLG_ERR);
 			}
 			catch (Exception e) {
 				updateErrorLog("Uknown Error: " + e);
@@ -247,6 +243,7 @@ public class ReformaticFrame extends JFrame
 			try {
 				processor.Save(filename);
 				processor.clear();
+				clearOutput();
 			} 
 			catch (IOException e) {
 				//TODO: Add error output  
@@ -264,6 +261,7 @@ public class ReformaticFrame extends JFrame
 	public void clearOutput() {
 		output.setText(null);
 		processor.clear();
+		fileLoaded = false;
 	}
 	
 	public void displayFlags() 
