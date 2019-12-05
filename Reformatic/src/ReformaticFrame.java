@@ -204,7 +204,7 @@ public class ReformaticFrame extends JFrame
 			catch (Exception e) {
 				updateErrorLog("Uknown Error: " + e);
 			}
-			
+			clearOutput();
 			fileLoaded = true;
 			ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
 			finalOutput = processor.getOutput();
@@ -223,6 +223,7 @@ public class ReformaticFrame extends JFrame
 						fileLoaded = false;
 						updateErrorLog(CORR_DOC_ERR + "- file input discarded");
 						clearOutput();
+						processor.clear();
 						break;
 					}
 				}
@@ -251,6 +252,8 @@ public class ReformaticFrame extends JFrame
 				processor.Save(filename);
 				processor.clear();
 				clearOutput();
+				fileLoaded= false;
+				processor.clear();
 			} 
 			catch (IOException e) {
 				//TODO: Add error output  
@@ -267,8 +270,6 @@ public class ReformaticFrame extends JFrame
 	
 	public void clearOutput() {
 		output.setText(null);
-		processor.clear();
-		fileLoaded = false;
 	}
 	
 	public void displayFlags() 
