@@ -1,18 +1,21 @@
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.io.*;
+import java.util.ArrayList;
+
 import javax.swing.filechooser.FileSystemView;
 
 public class ReformaticFrame extends JFrame 
 {
 	private JPanel centerPanel;
-	private JButton loadBtn, saveBtn, viewFlagsBtn, quitBtn;
+	private JButton loadBtn, saveBtn, clearBtn, viewFlagsBtn, quitBtn;
 	private JTextArea output, error;
 	private ActionListener listener;
 	private Processing processor; 
@@ -24,7 +27,10 @@ public class ReformaticFrame extends JFrame
 		processor = new Processing();
 		createCenterPanel();
 		add(centerPanel);
-		setSize(800,400);
+		
+		// set basic frame properties
+		setSize(1280,640);
+		setTitle("Reformatic - A file reformatting tool");
 	}
 	
 	//TODO: add the function for each button call 
@@ -36,6 +42,8 @@ public class ReformaticFrame extends JFrame
 				loadFile();
 			if(event.getSource() == saveBtn)
 				saveFile();
+			if(event.getSource() == clearBtn) 
+				clearOutput();
 			if(event.getSource() == viewFlagsBtn)
 				displayFlags();
 			if(event.getSource() == quitBtn)
@@ -77,13 +85,17 @@ public class ReformaticFrame extends JFrame
         saveBtn = new JButton("Save File");
         leftPanel.add(saveBtn,1);
         saveBtn.addActionListener(listener);
+        
+        clearBtn = new JButton("Clear");
+        leftPanel.add(clearBtn,2);
+        clearBtn.addActionListener(listener);
 
         viewFlagsBtn = new JButton("View Flags");
-        leftPanel.add(viewFlagsBtn,2);
+        leftPanel.add(viewFlagsBtn,3);
         viewFlagsBtn.addActionListener(listener);
         
         quitBtn = new JButton("Quit");
-        leftPanel.add(quitBtn,3);
+        leftPanel.add(quitBtn,4);
         quitBtn.addActionListener(listener);
  
 		return leftPanel;
@@ -91,12 +103,6 @@ public class ReformaticFrame extends JFrame
 	public JPanel createRightPanel()
 	{
 		// create the right panel
-		/*
-        GridLayout colLayout = new GridLayout(0, 1);
-        colLayout.setVgap(10);
-        colLayout.setHgap(10);
-		JPanel rightPanel = new JPanel(colLayout);
-		*/
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new BorderLayout());
 		
@@ -142,6 +148,17 @@ public class ReformaticFrame extends JFrame
 		catch (IOException e) {
 			//TODO: Add error output  
 		}
+		
+		ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
+		finalOutput = processor.getOutput();
+		
+		// Looping through each line and printing the output to the text area
+		int i = 0;
+		for(Paragraph p : finalOutput){
+			String line = p.getFormattedLine(i);
+			output.append(line + "\n");
+			i++;
+		}
 	}
 	
 	public void saveFile() 
@@ -161,6 +178,9 @@ public class ReformaticFrame extends JFrame
 		}
 	}
 	
+	public void clearOutput() {
+		output.setText(null);
+	}
 	public void displayFlags() 
 	{
 		String flags = "List of Flags:\n" +
