@@ -23,8 +23,6 @@ public class Paragraph {
 	public Paragraph(Paragraph previous) {
 		justification = previous.getJustification();
 		single= previous.getSingle();
-		if(!single)
-			formatted.add("");
 		indentation= previous.getIndentation();
 		block = previous.getBlock();
 		column1= previous.getColumn();
@@ -207,6 +205,8 @@ public class Paragraph {
 		}
 		if(temp.length()>0) {
 			formatted.add(temp);
+			if(!single)
+				formatted.add("");
 		}
 	}
 	
@@ -242,6 +242,8 @@ public class Paragraph {
 		}
 		if(temp.length()>0) {
 			formatted.add(temp);
+			if(!single)
+				formatted.add("");
 		}
 	}
 	
@@ -282,6 +284,8 @@ public class Paragraph {
 			while(temp.length()<size)
 				temp= temp+ " ";
 			list.add(temp);
+			if(!single&& column1)
+				formatted.add("");
 		}
 		return list;
 	}
@@ -324,6 +328,8 @@ public class Paragraph {
 				temp= " " +temp;
 			}
 			list.add(temp);
+			if(!single && column1)
+				formatted.add("");
 		}
 		return list;	
 	}
@@ -362,6 +368,8 @@ public class Paragraph {
 		if(temp.length()>0) {
 			temp = centerHelper(temp, size);
 			list.add(temp);
+			if(!single && column1)
+				formatted.add("");
 		}
 		return list;
 	}

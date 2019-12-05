@@ -11,7 +11,7 @@ public class Processing {
 			formatted = new ArrayList<Paragraph>();
 		}
 		
-		public void readFile(String fileName) throws Exception{
+		public void readFile(String fileName) throws IOException{
 			File file= new File(fileName);
 			BufferedReader reader= new BufferedReader(new FileReader(file));
 			String str;
@@ -66,10 +66,11 @@ public class Processing {
 				Paragraph temp= formatted.get(i);
 				for(int j= 0; j<temp.getFormattedSize(); j++) {
 					out.write(temp.getFormattedLine(j));
-					if(j< temp.getFormattedSize() -1) {
+					if(j< temp.getFormattedSize()-1)
 						out.newLine();
-					}
 				}
+				if(i<formatted.size()-1 && i>0)
+					out.newLine();
 			}
 			out.close();
 		}
