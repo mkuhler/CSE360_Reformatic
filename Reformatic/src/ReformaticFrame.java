@@ -2,7 +2,10 @@ import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.border.EtchedBorder;
@@ -31,6 +34,8 @@ public class ReformaticFrame extends JFrame
 		// set basic frame properties
 		setSize(1280,640);
 		setTitle("Reformatic - A file reformatting tool");
+		Font mainFont = new Font("Courier", Font.BOLD,12);
+		changeFont( this, mainFont);
 	}
 	
 	//TODO: add the function for each button call 
@@ -202,5 +207,16 @@ public class ReformaticFrame extends JFrame
 				"-e		Blank Line";
 		
 		JOptionPane.showMessageDialog(null, flags);
+	}
+	public static void changeFont ( Component component, Font font )
+	{
+	    component.setFont ( font );
+	    if ( component instanceof Container )
+	    {
+	        for ( Component child : ( ( Container ) component ).getComponents () )
+	        {
+	            changeFont ( child, font );
+	        }
+	    }
 	}
 }
