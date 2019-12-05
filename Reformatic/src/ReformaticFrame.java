@@ -20,12 +20,27 @@ import javax.swing.filechooser.FileSystemView;
 
 public class ReformaticFrame extends JFrame 
 {
+	// panel components 
 	private JPanel centerPanel;
 	private JButton loadBtn, saveBtn, clearBtn, viewFlagsBtn, quitBtn;
 	private JTextArea output, error;
 	private ActionListener listener;
 	private Processing processor; 
 	private JFileChooser fc;
+	
+	// error logging components 
+	private boolean fileLoaded = false;
+	private String errorLog = "";
+	
+	// error strings
+	private final String INVAL_FLG_ERR = "INVALID FLAG";
+	private final String MULTI_FLG_ERR = "MULTIPLE FLAGS";
+	private final String EPTY_DOC_ERR = "EMPTY DOCUMENT";
+	private final String CORR_DOC_ERR = "CORRUPTED DOCUMENT";
+	private final String UNSUP_FILE_ERR = "UNSUPPORTED FILETYPE";
+	private final String FILE_NOT_FOUND = "FILE NOT FOUND";
+	private final String INVAL_SAVE = "INVALID SAVE";
+	
 	ReformaticFrame()
 	{
 		fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -41,7 +56,6 @@ public class ReformaticFrame extends JFrame
 		changeFont( this, mainFont);
 	}
 	
-	//TODO: add the function for each button call 
 	public class ChoiceListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -175,6 +189,7 @@ public class ReformaticFrame extends JFrame
 			//TODO: Add error output  
 		}
 		
+		fileLoaded = true;
 		ArrayList<Paragraph> finalOutput = new ArrayList<Paragraph>();
 		finalOutput = processor.getOutput();
 		
@@ -189,19 +204,29 @@ public class ReformaticFrame extends JFrame
 	
 	public void saveFile() 
 	{
-		String filename = "";
-		int returnValue = fc.showSaveDialog(null);
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fc.getSelectedFile();
-			filename = selectedFile.getAbsolutePath();
-		}
+		if(fileLoaded)
+		{
+			String filename = "";
+			int returnValue = fc.showSaveDialog(null);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				File selectedFile = fc.getSelectedFile();
+				filename = selectedFile.getAbsolutePath();
+			}
 		
-		try {
-			processor.Save(filename);
-			processor.clear();
-		} 
-		catch (IOException e) {
-			//TODO: Add error output  
+			try {
+				processor.Save(filename);
+				processor.clear();
+			} 
+			catch (IOException e) {
+				//TODO: Add error output  
+			}
+		}
+		else
+		{
+			// if we get here, it means a file has not been loaded yet
+			// which means we need to error out 
+			updateErrorLog(INVAL_SAVE);
+			
 		}
 	}
 	
@@ -209,6 +234,7 @@ public class ReformaticFrame extends JFrame
 		output.setText(null);
 		processor.clear();
 	}
+	
 	public void displayFlags() 
 	{
 		String tab = "     ";
@@ -230,6 +256,7 @@ public class ReformaticFrame extends JFrame
 		
 		JOptionPane.showMessageDialog(null, flags);
 	}
+	
 	public static void changeFont ( Component component, Font font )
 	{
 	    component.setFont ( font );
@@ -240,5 +267,11 @@ public class ReformaticFrame extends JFrame
 	            changeFont ( child, font );
 	        }
 	    }
+	}
+	
+	private void updateErrorLog(String errorStatement)
+	{
+		errorLog += "ERROR: "+ errorStatement + "\n";
+		error.setText(errorLog);
 	}
 }
