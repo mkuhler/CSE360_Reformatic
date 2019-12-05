@@ -153,11 +153,11 @@ public class ReformaticFrame extends JFrame
 		finalOutput = processor.getOutput();
 		
 		// Looping through each line and printing the output to the text area
-		int i = 0;
 		for(Paragraph p : finalOutput){
-			String line = p.getFormattedLine(i);
-			output.append(line + "\n");
-			i++;
+			for(int i =0; i<p.getFormattedSize(); i++) {
+				String line = p.getFormattedLine(i);
+				output.append(line + "\n");
+			}
 		}
 	}
 	
@@ -172,6 +172,7 @@ public class ReformaticFrame extends JFrame
 		
 		try {
 			processor.Save(filename);
+			processor.clear();
 		} 
 		catch (IOException e) {
 			//TODO: Add error output  
@@ -180,6 +181,7 @@ public class ReformaticFrame extends JFrame
 	
 	public void clearOutput() {
 		output.setText(null);
+		processor.clear();
 	}
 	public void displayFlags() 
 	{

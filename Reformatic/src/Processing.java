@@ -72,6 +72,9 @@ public class Processing {
 				}
 			}
 			out.close();
-		}		
+		}
+		public void clear() {
+			formatted.clear();
+		}
 }
 
