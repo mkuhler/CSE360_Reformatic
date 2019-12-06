@@ -62,8 +62,11 @@ public class ReformaticFrame extends JFrame
 				loadFile();
 			if(event.getSource() == saveBtn)
 				saveFile();
-			if(event.getSource() == clearBtn) 
+			if(event.getSource() == clearBtn) { 
 				clearOutput();
+				fileLoaded=false;
+				processor.clear();
+			}
 			if(event.getSource() == viewFlagsBtn)
 				displayFlags();
 			if(event.getSource() == quitBtn)
