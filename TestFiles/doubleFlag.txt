@@ -1,0 +1,8 @@
+-l
+-r
+-c
+word word
+-l
+-r
+-c -c
+word word

@@ -1,0 +1,18 @@
+-l
+word word word word word word word word word word word word word word word words
+word word word word
+word word word word
+word word word word
+word word word words
+-r
+word word word word word word word word word word word word word word word words
+word word word word
+word word word word
+word word word word
+word word word words
+-c
+word word word word word word word word word word word word word word word words
+word word word word
+word word word word
+word word word word
+word word word words

@@ -1,0 +1,668 @@
+-l
+-r
+-c
+word word
+-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-p
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word-l
+-r
+-c
+word word
